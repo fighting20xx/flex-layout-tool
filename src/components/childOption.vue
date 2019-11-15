@@ -19,7 +19,7 @@
                     </div>
                     <div class="block" v-show="['value','percent'].indexOf(childOption.widthType) > -1">
                         <span class="demonstration">子容器宽度</span>
-                        <el-slider v-model="childOption.itemWidth" :min="1" :max="100" ></el-slider>
+                        <el-slider v-model="childOption.itemWidth" :min="1" :max="200" ></el-slider>
                     </div>
 
                     <div class="block">
@@ -31,7 +31,7 @@
                     </div>
                     <div class="block" v-show="['value','percent'].indexOf(childOption.heightType) > -1">
                         <span class="demonstration">子容器高度</span>
-                        <el-slider v-model="childOption.itemHeight" :min="1" :max="100" ></el-slider>
+                        <el-slider v-model="childOption.itemHeight" :min="1" :max="200" ></el-slider>
                     </div>
                     <div class="block">
                         <span class="demonstration">margin</span>

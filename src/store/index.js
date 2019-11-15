@@ -16,10 +16,10 @@ export default new Vuex.Store({
 		},
 		childOption: {
 			itemCount: 3,
-			itemWidth: 30,
-			widthType: 'flex',
-			itemHeight: 60,
+			widthType: 'value',
+			itemWidth: 100,
 			heightType: 'value',
+			itemHeight: 80,
 			margin:0,
 			padding:0,
 

@@ -1,6 +1,6 @@
 <template>
     <div class="viewShow-container">
-        <transition-group class="grid-content" name="list-complete" tag="div" :style="{
+        <div class="grid-content" name="list-complete" tag="div" :style="{
                     display: 'flex',
                     flexDirection: fatherOption.flexDirection,
                     flexWrap: fatherOption.flexWrap,
@@ -13,7 +13,7 @@
             <div class="grid-item" v-for="(item, index) in itemLists" :key="index" :style="itemStyle(item)" >
                 <div class="grid-item-inner">{{'子容器'+index}}</div>
             </div>
-        </transition-group>
+        </div>
     </div>
 </template>
 
@@ -117,7 +117,7 @@
             .grid-item {
                 border: .1px solid blue;
                 background: #aaa;
-                text-align: center;
+                text-align: left;
                 .grid-item-inner{
                     border: .1px dotted blue;
                     background-color: #fff;

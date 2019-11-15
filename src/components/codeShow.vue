@@ -1,23 +1,25 @@
 <template>
-    <div class="container">
-        <el-row>
-            <el-col :span="24">
-                <h1>父容器CSS:</h1>
-                <pre>
+    <div class="codeShow-top">
+        <div>
+                <h3>父容器CSS:</h3>
+                <pre class="code-show-pre">
 .items {
     display: flex;
-    flex-direction: {{ flexDirection }};
-    flex-wrap: {{ flexWrap }};
-    justify-content: {{ justifyContent }};
-    align-items: {{ alignItems }};
-    align-content: {{ alignContent }};
-}
+    <span v-show="isShowflexDirection">flex-direction: {{ fatherOption.flexDirection }};</span>
+    <span v-show="isShowflexWrap">flex-wrap: {{ fatherOption.flexWrap }};</span>
+    <span v-show="isShowjustifyContent">justify-content: {{ fatherOption.justifyContent }};</span>
+    <span v-show="isShowalignItems">align-items: {{ fatherOption.alignItems }};</span>
+    <span v-show="isShowalignContent">align-content: {{ fatherOption.alignContent }};</span>
+    <span v-show="isShowmargin">align-content: {{ fatherOption.alignContent }};</span>
+    <span v-show="isShowpading">align-content: {{ fatherOption.alignContent }};</span>
+
+ };
+
                 </pre>
-            </el-col>
-        </el-row>
+        </div>
         <el-row>
             <el-col :span="24">
-                <h1>子容器CSS:</h1>
+                <h3>子容器CSS:</h3>
                 <pre v-for="(item, index) in itemLists" :key="index">
 .item-{{ index }} {
     align-self: {{ item.alignSelf }};
@@ -39,74 +41,44 @@
 		},
 		data() {
 			return {
-				flexDirection: 'row',
-				flexWrap: 'nowrap',
-				justifyContent: 'flex-start',
-				alignItems: 'stretch',
-				alignContent: 'stretch',
-				options1: [
-					{
-						value: 'row'
-					}, {
-						value: 'row-reverse'
-					}, {
-						value: 'column'
-					}, {
-						value: 'column-reverse'
-					}
-				],
-				options2: [
-					{
-						value: 'nowrap'
-					}, {
-						value: 'wrap'
-					}, {
-						value: 'wrap-reverse'
-					}],
-				options3: [
-					{
-						value: 'flex-start'
-					}, {
-						value: 'flex-end'
-					}, {
-						value: 'center'
-					}, {
-						value: 'space-between'
-					}, {
-						value: 'space-around'
-					}],
-				options4: [
-					{
-						value: 'stretch'
-					}, {
-						value: 'flex-start'
-					}, {
-						value: 'flex-end'
-					}, {
-						value: 'center'
-					}, {
-						value: 'baseline'
-					}],
-				options5: [
-					{
-						value: 'stretch'
-					}, {
-						value: 'flex-start'
-					}, {
-						value: 'flex-end'
-					}, {
-						value: 'center'
-					}, {
-						value: 'space-between'
-					}, {
-						value: 'space-around'
-					}
-				],
+
 			}
-		}
+		},
+        computed:{
+			isShowflexDirection:function () {
+                return 'row' !== this.fatherOption.flexDirection;
+			},
+            isShowflexWrap:function () {
+                return 'nowrap' !== this.fatherOption.flexWrap;
+			},
+            isShowjustifyContent:function () {
+                return 'flex-start' !== this.fatherOption.justifyContent;
+			},
+            isShowalignItems:function () {
+                return 'stretch' !== this.fatherOption.alignItems;
+			},
+            isShowalignContent:function () {
+                return 'stretch' !== this.fatherOption.alignContent;
+			},
+            isShowmargin:function () {
+                return  this.fatherOption.margin >0;
+			},
+            isShowpading:function () {
+                return   this.fatherOption.padding > 0;
+			},
+        }
 	}
 </script>
 
 <style lang="less">
-
+.codeShow-top{
+    text-align: left;
+    .code-show-pre{
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+    .not-show-code{
+        white-space:normal;
+    }
+}
 </style>

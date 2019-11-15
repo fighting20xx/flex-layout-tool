@@ -14,7 +14,7 @@
                 <childOption></childOption>
             </el-col>
         </el-row>
-<!--        <codeShow></codeShow>-->
+        <codeShow></codeShow>
     </div>
 </template>
 
