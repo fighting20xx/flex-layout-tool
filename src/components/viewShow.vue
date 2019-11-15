@@ -10,14 +10,9 @@
                     margin:fatherOption.margin+'px',
                     padding:fatherOption.padding+'px',
                 }">
-            <div v-for="(item, index) in itemLists" :key="index" :style="{
-                        width: childOption.width + '%',
-                        alignSelf: item.alignSelf,
-                        flexBasis: item.flexBasis,
-                        flexGrow: item.flexGrow,
-                        flexShrink: item.flexShrink,
-                        order: item.order
-                    }" v-text="'子容器: ' + index"></div>
+            <div class="grid-item" v-for="(item, index) in itemLists" :key="index" :style="itemStyle(item)" >
+                <div class="grid-item-inner">{{'子容器'+index}}</div>
+            </div>
         </transition-group>
     </div>
 </template>
@@ -40,6 +35,9 @@
 					const addNum = val - oldVal
 					for (let i = 0; i < addNum; i++) {
 						this.itemLists.push({
+							flex:1,
+							width:30,
+							percent:33,
 							order: 0,
 							flexGrow: 0,
 							flexShrink: 1,
@@ -56,7 +54,52 @@
 		computed:{
 
 
+		},
+        methods: {
+            itemStyle:function (item) {
+                let self = this;
+               let style = {
+				   width: self.childOption.width + '%',
+				   margin: self.childOption.margin + 'px',
+				   padding: self.childOption.padding + 'px',
+				   alignSelf: item.alignSelf,
+				   flexBasis: item.flexBasis,
+				   flexGrow: item.flexGrow,
+				   flexShrink: item.flexShrink,
+				   order: item.order
+			   };
+               switch (self.childOption.widthType) {
+               	    case "flex":
+                        style.flex = item.flex;
+                        break;
+                    case "percent":
+                        style.width = self.childOption.itemWidth+'%';
+                        break;
+                   case "value":
+					   style.width = self.childOption.itemWidth+'px';
+                        break;
+                   default:
+                   	    1===1;
+			   }
+			   switch (self.childOption.heightType) {
+               	    case "flex":
+                        style.flex = item.flex;
+                        break;
+                    case "percent":
+                        style.height = self.childOption.itemHeight+'%';
+                        break;
+                   case "value":
+					   style.height = self.childOption.itemHeight+'px';
+                        break;
+                   default:
+                   	    1===1;
+			   }
+
+
+            	return style
+			}
 		}
+
 	}
 </script>
 
@@ -71,11 +114,15 @@
             /*border: .1px  solid #f00;*/
 
 
-            & > div {
-                height: 100px;
-                border: .1px dotted blue;
-                background: #fff;
+            .grid-item {
+                border: .1px solid blue;
+                background: #aaa;
                 text-align: center;
+                .grid-item-inner{
+                    border: .1px dotted blue;
+                    background-color: #fff;
+                    height: 100%;
+                }
             }
         }
     }

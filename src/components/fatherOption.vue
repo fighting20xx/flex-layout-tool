@@ -33,7 +33,7 @@
             </el-form-item>
         </el-form>
 
-        <div>
+        <div class="father-other-option">
             <div class="block">
                 <span class="demonstration">margin</span>
                 <el-slider v-model="fatherOption.margin" :min="-100" :max="100"></el-slider>{{fatherOption.margin}}
@@ -127,5 +127,23 @@
 </script>
 
 <style lang="less">
+.father-other-option{
+    .block{
+        width: 100%;
+        display: flex;
+        text-align: right;
+        line-height: 38px;
+        &>:nth-child(1){
+            width: 120px;
+            margin-right: 5px;
 
+        }
+        &>:nth-child(2){
+            flex: 1;
+        }
+        &>:nth-child(3){
+
+        }
+    }
+}
 </style>

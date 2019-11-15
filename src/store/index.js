@@ -18,6 +18,10 @@ export default new Vuex.Store({
 			itemCount: 3,
 			itemWidth: 30,
 			widthType: 'flex',
+			itemHeight: 60,
+			heightType: 'value',
+			margin:0,
+			padding:0,
 
 			flexDirection: 'row',
 			flexWrap: 'nowrap',
