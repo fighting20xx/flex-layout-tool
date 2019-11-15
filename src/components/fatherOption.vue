@@ -47,7 +47,9 @@
 </template>
 
 <script>
+	import vuexOptions from '@/mixins/vuexOptions.js'
 	export default {
+		mixins:[vuexOptions],
 		props: {
 			msg: String
 		},
@@ -119,34 +121,11 @@
 			}
 		},
         computed:{
-			fatherOption:{
-				get:function () {
-                    return this.$store.state.fatherOption
-				},
-                set:function (v) {
-                    this.$store.commit('setFatherOption',v);
-				},
-            },
+
         }
 	}
 </script>
 
 <style lang="less">
-    h3 {
-        margin: 40px 0 0;
-    }
 
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
-
-    a {
-        color: #42b983;
-    }
 </style>

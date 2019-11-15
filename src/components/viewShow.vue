@@ -11,7 +11,7 @@
                     padding:fatherOption.padding+'px',
                 }">
             <div v-for="(item, index) in itemLists" :key="index" :style="{
-                        width: itemWidth + '%',
+                        width: childOption.width + '%',
                         alignSelf: item.alignSelf,
                         flexBasis: item.flexBasis,
                         flexGrow: item.flexGrow,
@@ -23,35 +23,19 @@
 </template>
 
 <script>
+	import vuexOptions from '@/mixins/vuexOptions.js'
 	export default {
+		mixins:[vuexOptions],
 		props: {
 			msg: String
 		},
 		data() {
 			return {
-				itemLists: [{
-					order: 0,
-					flexGrow: 0,
-					flexShrink: 1,
-					flexBasis: 'auto',
-					alignSelf: 'auto'
-				}, {
-					order: 0,
-					flexGrow: 0,
-					flexShrink: 1,
-					flexBasis: 'auto',
-					alignSelf: 'auto'
-				}, {
-					order: 0,
-					flexGrow: 0,
-					flexShrink: 1,
-					flexBasis: 'auto',
-					alignSelf: 'auto'
-				}]
+
 			}
 		},
 		watch: {
-			'childOption.itemNum':function(val, oldVal) {
+			'childOption.itemCount':function(val, oldVal) {
 				if (val > oldVal) {
 					const addNum = val - oldVal
 					for (let i = 0; i < addNum; i++) {
@@ -64,28 +48,14 @@
 						})
 					}
 				} else {
-					const subNum = oldVal - val
+					const subNum = oldVal - val;
 					this.itemLists.splice(val, subNum)
 				}
 			}
 		},
 		computed:{
-			fatherOption:{
-				get:function () {
-					return this.$store.state.fatherOption
-				},
-				set:function (v) {
-					this.$store.commit('setFatherOption',v);
-				},
-			},
-			childOption:{
-				get:function () {
-					return this.$store.state.childOption
-				},
-				set:function (v) {
-					this.$store.commit('setChildOptionn',v);
-				},
-			},
+
+
 		}
 	}
 </script>
@@ -103,8 +73,7 @@
 
             & > div {
                 height: 100px;
-                border: 1px solid blue;
-                border-radius: 10px;
+                border: .1px dotted blue;
                 background: #fff;
                 text-align: center;
             }
