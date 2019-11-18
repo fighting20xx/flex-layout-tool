@@ -81,10 +81,10 @@
 						str += splitCode(positionIndex+1,'flex: 1;');
 						break;
 					case "percent":
-						str += splitCode(positionIndex+1,`width: ${self.childOption.itemWidth } + %;`);
+						str += splitCode(positionIndex+1,`width: ${self.childOption.itemWidth }%;`);
 						break;
 					case "value":
-						str += splitCode(positionIndex+1,`width: ${self.childOption.itemWidth } + px;`);
+						str += splitCode(positionIndex+1,`width: ${self.childOption.itemWidth }px;`);
 						break;
 					default:
 						1===1;
@@ -94,10 +94,10 @@
 						str += splitCode(positionIndex+1,'flex: 1;');
 						break;
 					case "percent":
-						str += splitCode(positionIndex+1,`height: ${self.childOption.itemHeight } + %;`);
+						str += splitCode(positionIndex+1,`height: ${self.childOption.itemHeight }%;`);
 						break;
 					case "value":
-						str += splitCode(positionIndex+1,`height: ${self.childOption.itemHeight } + px;`);
+						str += splitCode(positionIndex+1,`height: ${self.childOption.itemHeight }px;`);
 						break;
 					default:
 						1===1;
@@ -176,5 +176,7 @@
     .not-show-code{
         white-space:normal;
     }
+
+
 }
 </style>
